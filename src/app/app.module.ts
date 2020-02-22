@@ -1,18 +1,51 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
+/* Routing */
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
+
+import { HttpClientModule } from '@angular/common/http';
+
+/* Angular Material */
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './angular-material.module';
+
+/* FormsModule */
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+/* Angular Flex Layout */
+import { FlexLayoutModule } from "@angular/flex-layout";
+
+/* Components */
+import { LandingComponent } from './components/landing/landing.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+
+
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AngularMaterialModule,
+    FlexLayoutModule,
+    FormsModule, 
+    ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthService],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
+
 export class AppModule { }
