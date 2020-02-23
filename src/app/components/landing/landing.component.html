@@ -1,2 +1,10 @@
-<p>landing works!</p>
-<button mat-button>Click me!</button>
+<!-- <div fxLayout="column" fxLayoutAlign="center center" fxFill> -->
+
+    <!-- <label>hello</label>
+    <notes-card-view></notes-card-view> -->
+<mat-grid-list [cols]="breakpoint" gutterSize="30px" rowHeight="250px" (window:resize)="onResize($event)">
+    <ng-container *ngFor="let note of notes">
+        <mat-grid-tile><notes-card-view [note]='note'></notes-card-view></mat-grid-tile>
+    </ng-container>
+  </mat-grid-list>    
+<!-- </div>  -->

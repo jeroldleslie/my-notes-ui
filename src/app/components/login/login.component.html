@@ -1,55 +1,70 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<div fxFill fxLayout="row" fxLayoutAlign="center center">
 
-    <mat-card class="box">
+    <mat-card class="example-card">
         <mat-card-header>
+            <!-- <div mat-card-avatar class="example-header-image"></div> -->
             <mat-card-title>Signin</mat-card-title>
+            <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
         </mat-card-header>
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
 
-        <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <!-- <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p> -->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="example-full-width">
             <mat-card-content>
-                <!-- <mat-form-field class="example-full-width">
-            <input id="email" name="email" matInput placeholder="Email" formControlName="email">
-          </mat-form-field>
-  
-          <mat-form-field class="example-full-width">
-            <input  id="password" name="password"  matInput placeholder="Password" formControlName="password">
-          </mat-form-field> -->
-                <mat-form-field appearance="outline" class="example-full-width">
-                    <mat-label>Email</mat-label>
-                    <input matInput formControlName="email" [errorStateMatcher]="matcher"
-                        placeholder="Ex. pat@example.com" id="email" required>
-                    <mat-icon matSuffix>perm_identity</mat-icon>
-                    <mat-hint>Enter email</mat-hint>
-                    <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
-                        Please enter a valid email address
-                    </mat-error>
-                    <mat-error *ngIf="email.hasError('required')">
-                        Email is <strong>required</strong>
-                    </mat-error>
-                </mat-form-field>
+                <div class="vertical-space"></div>
+                <div fxLayout="column" fxLayoutAlign="center center">
+                    <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" [errorStateMatcher]="matcher"
+                            placeholder="Ex. pat@example.com" id="email" required>
+                        <mat-icon matSuffix>perm_identity</mat-icon>
+                        <mat-hint>Enter email</mat-hint>
+                        <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="email.hasError('required')">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
 
-                <mat-form-field appearance="outline" class="example-full-width">
-                    <mat-label>Password</mat-label>
-                    <input matInput placeholder="Placeholder" type="password" formControlName="password"
-                        [errorStateMatcher]="matcher" id="password" required>
-                    <mat-icon matSuffix>vpn_key</mat-icon>
-                    <mat-hint>Enter password</mat-hint>
-                    <mat-error *ngIf="password.hasError('required')">
-                        Password is <strong>required</strong>
-                    </mat-error>
-                </mat-form-field>
-
+                    <div class="vertical-space"></div>
+                    <mat-form-field appearance="outline" class="example-full-width" class="form-field">
+                        <mat-label>Password</mat-label>
+                        <input matInput placeholder="Placeholder" type="password" formControlName="password"
+                            [errorStateMatcher]="matcher" id="password" required>
+                        <mat-icon matSuffix>vpn_key</mat-icon>
+                        <mat-hint>Enter password</mat-hint>
+                        <mat-error *ngIf="password.hasError('required')">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="vertical-space"></div>
+                    <div fxLayout="row" fxLayoutAlign="end center" class="form-field">
+                        <button [disabled]="loading" mat-raised-button color="accent" type="submit" class="form-field">
+                            <mat-icon>
+                                <mat-spinner color="accent" *ngIf="loading" diameter="20">
+                                </mat-spinner>
+                            </mat-icon>Signin
+                        </button>
+                    </div>
+                    <div class="vertical-space"></div>
                     <div fxLayout="row" fxLayoutAlign="center center" class="example-full-width">
                         <mat-error *ngIf="errorMessage">
                             {{errorMessage | uppercase}}
-                </mat-error>
+                        </mat-error>
                     </div>
-                
-                
-                    
-            </mat-card-content>
-            <button mat-button color="accent" type="submit">Signin</button>
-        </form>
-    </mat-card>
 
+                </div>
+            </mat-card-content>
+        </form>
+
+        <!-- <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions> -->
+    </mat-card>
 </div>

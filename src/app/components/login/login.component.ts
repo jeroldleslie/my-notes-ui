@@ -20,7 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class LoginComponent implements OnInit {
   @ViewChild('email') emailElement: ElementRef;
   @ViewChild('password') passwordElement: ElementRef;
-
+  loading = false;
   loginForm;
   errorMessage="";
   email = new FormControl('', [
@@ -58,8 +58,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
+      this.loading = true;
       this.authSerive.Signin(this.loginForm.value).subscribe(res => {
         this.errorMessage = ""
+        this.loading = false;
         console.log(res);
         console.log(res.status);
         if (res.status == "SUCCESS") {

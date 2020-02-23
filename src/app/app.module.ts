@@ -25,13 +25,18 @@ import { RegisterComponent } from './components/register/register.component';
 
 
 import { AuthService } from './services/auth.service';
-
+import { NotesCardViewComponent } from './components/notes-card-view/notes-card-view.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { NotesCreateFormComponent } from './components/notes-create-form/notes-create-form.component';
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotesCardViewComponent,
+    TruncatePipe,
+    NotesCreateFormComponent,
   ],
   imports: [
     BrowserModule,

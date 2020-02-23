@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+/* html, body { height: 100%; }
 body {     
     background-position: center;
     background-size: cover;
@@ -12,6 +12,67 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
 
+.home-container {
+    height: 100%;
+ } */
+
+
+
+html,
+body {
+  height: 100%;
+  height: 100vh;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+  min-height: 100vh;
+  height: 100vh;
+}
+
+$profile-size: 40px !default;
+.profile-avatar {
+  height: $profile-size;
+  width: $profile-size;
+  border-radius: 50%;
+  flex-shrink: 0;
+  cursor: pointer;
+
+  // Makes `<img>` tags behave like `background-size: cover`. Not supported
+  // in IE, but we're using it as a progressive enhancement.
+  object-fit: cover;
+}
+
+/* undefined {
+    display: block;
+    background-color: green;
+    min-height: 80%;
+    min-height: 80vh;
+  } */
+
+/* app-root {
+  order: 0;
+  flex: 1 1 auto;
+  align-self: auto;
+  display: block;
+} */
+
+.hidden-router {
+  flex: 1 1 auto;
+  display: flex;
+  overflow: hidden;
+}
+
+.main-toolbar {
+  border-bottom: thick;
+  border-color: red($color: #000000);
+}
+
 /* body {
   background-image: url(https://lh4.googleusercontent.com/-XplyTa1Za-I/VMSgIyAYkHI/AAAAAAAADxM/oL-rD6VP4ts/w1184-h666/Android-Lollipop-wallpapers-Google-Now-Wallpaper-2.png);
   background-position: center;
@@ -20,7 +81,7 @@ body {
   min-height: 100vh;
   font-family: 'Roboto', sans-serif;
 } */
-
+/* 
 .app-header {
   justify-content: space-between;
   position: fixed;
@@ -117,3 +178,4 @@ body {
   padding: 0.8375em 0;
 }
 
+ */

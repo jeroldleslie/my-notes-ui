@@ -18,7 +18,8 @@ import { MatChipsModule} from '@angular/material/chips';
 import { MatTooltipModule} from '@angular/material/tooltip';
 import { MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
-
+import {MatCardModule} from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
    imports: [
@@ -39,7 +40,9 @@ import { MatPaginatorModule} from '@angular/material/paginator';
       MatChipsModule,
       MatTooltipModule,
       MatTableModule,
-      MatPaginatorModule
+      MatPaginatorModule,
+      MatCardModule,
+      MatProgressSpinnerModule
    ],
    exports: [
     MatMenuModule,
@@ -58,7 +61,9 @@ import { MatPaginatorModule} from '@angular/material/paginator';
       MatChipsModule,
       MatTooltipModule,
       MatTableModule,
-      MatPaginatorModule
+      MatPaginatorModule,
+      MatCardModule,
+      MatProgressSpinnerModule
    ],
    providers: [
       MatDatepickerModule,
