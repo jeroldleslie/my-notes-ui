@@ -1,18 +1,42 @@
 <mat-card class="note-add-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
       <mat-card-title>ADD NOTE</mat-card-title>
     </mat-card-header>
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-    <mat-card-content>
-      <p>
+    
+      <!-- <p>
         The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
+      </p> -->
+      <form [formGroup]="addNoteForm" (ngSubmit)="onSubmit()" class="example-full-width">
+        <mat-card-content>
+        <div fxLayout="column" fxLayoutAlign="center center" class="example-full-width">
+            <mat-form-field class="note-add-form-field">
+                <!-- <mat-label>Email</mat-label> -->
+                <input matInput formControlName="title" id="title" placeholder="Title" #input> 
+            </mat-form-field>
+            <mat-form-field class="note-add-form-field">
+                <mat-label>Content</mat-label>
+                <textarea matInput
+                        id="content"
+                        formControlName="content"
+                        cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="1"
+                        cdkAutosizeMaxRows="5"></textarea>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="end center" fxFill>
+                <button mat-raised-button color="accent" type="submit">DONE</button>
+            </div>
+        </div>
+        </mat-card-content>
+      </form>
+    
+    
+    <!-- <mat-card-actions>
         <div fxFlex></div>
       <button mat-raised-button color="accent" (click)="submit()">DONE</button>
-    </mat-card-actions>
+    </mat-card-actions> -->
   </mat-card>

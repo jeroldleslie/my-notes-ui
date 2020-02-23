@@ -65,6 +65,9 @@ export class LoginComponent implements OnInit {
         console.log(res);
         console.log(res.status);
         if (res.status == "SUCCESS") {
+          localStorage.setItem('name', res.user);
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('user_id', res.user_id.toString());
           this.ngZone.run(() => this.router.navigateByUrl('/home'))
         }else if (res.status == "FAILURE") {
           this.errorMessage = res.message
@@ -82,5 +85,16 @@ export class LoginComponent implements OnInit {
     
 
     //console.warn('Your order has been submitted', customerData);
+  }
+
+  // Checking if token is set
+  isLoggedIn() {
+    return localStorage.getItem('token') != null;
+  }
+ 
+  // After clearing localStorage redirect to login screen
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

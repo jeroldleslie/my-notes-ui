@@ -28,6 +28,8 @@ import { AuthService } from './services/auth.service';
 import { NotesCardViewComponent } from './components/notes-card-view/notes-card-view.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { NotesCreateFormComponent } from './components/notes-create-form/notes-create-form.component';
+import { NotesService } from './services/notes.service';
+import { DataService } from './services/data.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +50,7 @@ import { NotesCreateFormComponent } from './components/notes-create-form/notes-c
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, NotesService, DataService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
