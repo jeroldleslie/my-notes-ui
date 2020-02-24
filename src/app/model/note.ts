@@ -9,4 +9,6 @@ export class Note {
     remind_until: string;
     image: string;
     user_id: BigInteger;
+    image_url: string;
+    image_id: BigInteger;
 }

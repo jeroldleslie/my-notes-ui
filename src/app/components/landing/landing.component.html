@@ -4,7 +4,8 @@
     <notes-card-view></notes-card-view> -->
 <mat-grid-list [cols]="breakpoint" gutterSize="10px" rowHeight="250px" (window:resize)="onResize($event)">
     <ng-container *ngFor="let note of notes">
-        <mat-grid-tile><notes-card-view [note]='note'></notes-card-view></mat-grid-tile>
+        
+        <mat-grid-tile><notes-card-view [note]="note"></notes-card-view></mat-grid-tile>
     </ng-container>
   </mat-grid-list>    
 <!-- </div>  -->

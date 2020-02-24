@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Notes } from 'src/app/model/notes';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { NotesService } from 'src/app/services/notes.service';
 import { DataService } from 'src/app/services/data.service';
+import { Note } from 'src/app/model/note';
 
 @Component({
   selector: 'notes-landing',
@@ -12,37 +12,11 @@ export class LandingComponent implements OnInit {
 
   breakpoint = 3;
 
-  notes: Notes[];
-  /*  = [
-    {
-      title: 'Hello',
-      content: 'sdfsdgf sdgsdfsdfhjsagf asjhfasbb kahfakj asjkfhasf asjasfha fkjasfhas aksjfhaskj sfkjsadhf askjfhasf sdfkjsdfhsa sdafajksfaskjf asfkjsafsf asfkjasbfas fjfh sajhfsdjhf sjhfsdjhf sdjhdfbds',
-      priority: '',
-      created_on: '',
-      remind_from: '',
-      remind_until: '',
-      image: ''
-    },
-    {
-      title: 'Hello Leslie',
-      content: 'wieurtxnmbviuw aujryqiuwrbcs iquwyndsfbsu iuqwyrbvmnsdiuwe iquwyrbviuwe iuwfb',
-      priority: '',
-      created_on: '',
-      remind_from: '',
-      remind_until: '',
-      image: ''
-    },
-    {
-      title: 'Nice team',
-      content: 'sdfjh iuehf weuyr sdjfb wuyerb',
-      priority: '',
-      created_on: '',
-      remind_from: '',
-      remind_until: '',
-      image: ''
-    }
-  ] */
-  constructor(private notesService: NotesService, private dataService:DataService) { }
+  notes: Note[];
+  
+  constructor(private notesService: NotesService,
+    private dataService: DataService,
+    private zone:NgZone) { }
 
   ngOnInit() {
     this.setCols();
@@ -50,8 +24,13 @@ export class LandingComponent implements OnInit {
     this.notesService.GetUserNotes().subscribe(res => {
       this.dataService.setNotes(res);
     }); */
-    this.dataService.notes.subscribe(notes => this.notes = notes);
-    
+    this.dataService.notes.subscribe(notes => {
+      this.zone.run(()=> { // <== added
+        this.notes = notes;
+        });
+      
+    });
+
     this.notesService.GetUserNotes().subscribe(res => {
       this.dataService.updateUserNotes(res);
     });

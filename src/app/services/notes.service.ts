@@ -33,7 +33,9 @@ export class NotesService {
     )
   }
   GetUserNotes(): Observable<Note[]> {
-    return this.http.get<Note[]>(environment.backendApiUrl  + '/api/notes/user_notes/'+ localStorage.getItem('user_id'))
+    var url = environment.backendApiUrl  + '/api/notes/user_notes/'+ localStorage.getItem('user_id')
+    //alert(url)
+    return this.http.get<Note[]>(url)
     .pipe(
       retry(1),
       catchError(this.errorHandl)
@@ -42,6 +44,16 @@ export class NotesService {
 
   DeleteNote(id): Observable<any> {
     return this.http.delete<any>(environment.backendApiUrl  + '/api/notes/' + id)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    )
+  }
+
+  ImageUpload(formData): Observable<any> {
+
+    //window.alert(JSON.stringify(formData));
+    return this.http.post<any>(environment.backendApiUrl  + '/api/notes/file', formData)
     .pipe(
       retry(1),
       catchError(this.errorHandl)
@@ -59,7 +71,7 @@ export class NotesService {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    window.alert(errorMessage);
+    /* window.alert(errorMessage); */
     console.log(errorMessage);
     return throwError(errorMessage);
  }
