@@ -30,6 +30,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { NotesCreateFormComponent } from './components/notes-create-form/notes-create-form.component';
 import { NotesService } from './services/notes.service';
 import { DataService } from './services/data.service';
+import { ReminderComponent } from './components/reminder/reminder.component';
+import { SearchComponent } from './components/search/search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,8 @@ import { DataService } from './services/data.service';
     NotesCardViewComponent,
     TruncatePipe,
     NotesCreateFormComponent,
+    ReminderComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

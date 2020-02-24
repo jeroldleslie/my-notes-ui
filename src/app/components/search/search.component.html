@@ -1,0 +1,8 @@
+<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" class="notes-search">
+    
+        <input type="text" id="searchInput" name="searchInput" placeholder="Search notes" class="search-bar" (keyup.enter)="onEnterKey()"  #searchInput>
+    
+      <button mat-icon-button color="accent" aria-label="Search" (click)="search()">
+        <mat-icon>search</mat-icon>
+      </button>
+</div>

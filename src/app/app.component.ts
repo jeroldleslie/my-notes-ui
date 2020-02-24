@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {NotesCreateFormComponent} from './components/notes-create-form/notes-create-form.component';
+import { AuthService } from './services/auth.service';
+import { NotesService } from './services/notes.service';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +11,12 @@ import {NotesCreateFormComponent} from './components/notes-create-form/notes-cre
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-notes-ui';
-  constructor(public dialog: MatDialog) {}
+  profileImg;
+
+  constructor(public dialog: MatDialog,
+    private authService:AuthService,
+    private noteService:NotesService,
+    private dataService:DataService) {}
 
   showCreateNoteDialog() {
     const dialogRef = this.dialog.open(NotesCreateFormComponent, {
@@ -21,6 +28,16 @@ export class AppComponent {
       console.log('The dialog was closed');
       //this.animal = result;
     });
+  }
+
+  reloadAllNotes(){
+    this.noteService.GetUserNotes().subscribe(res => {
+      this.dataService.updateUserNotes(res);
+    });
+  }
+
+  logout(){
+      this.authService.logout();
   }
   
 }

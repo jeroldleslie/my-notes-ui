@@ -22,7 +22,8 @@ export class NotesCreateFormComponent implements OnInit {
     private notesService:NotesService,
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<NotesCreateFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Note) {
+    @Inject(MAT_DIALOG_DATA) 
+    public data: Note) {
       this.addNoteForm = this.formBuilder.group({
         title: this.title,
         content: this.content,

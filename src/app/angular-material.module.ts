@@ -20,6 +20,7 @@ import { MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
    imports: [
@@ -37,6 +38,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
       MatSelectModule,
       MatRadioModule,
       MatDatepickerModule,
+      MatNativeDateModule,
       MatChipsModule,
       MatTooltipModule,
       MatTableModule,
@@ -58,6 +60,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
       MatSelectModule,
       MatRadioModule,
       MatDatepickerModule,
+      MatNativeDateModule,
       MatChipsModule,
       MatTooltipModule,
       MatTableModule,

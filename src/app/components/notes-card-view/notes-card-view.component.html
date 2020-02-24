@@ -19,7 +19,7 @@
       <button mat-button>SHARE</button> -->
 
       <div fxFlex></div>
-      <button mat-icon-button color="accent" aria-label="Example icon-button with a heart icon">
+      <button mat-icon-button color="accent" aria-label="Favorite">
         <mat-icon>star</mat-icon>
       </button>
       <button mat-icon-button color="accent" aria-label="Add Image" (click)="openFile()">
@@ -27,7 +27,7 @@
         <!-- <input value="10" style="display:none" id="noteid" name="noteid" formControlName="noteid"> -->
         <mat-icon>add_photo_alternate</mat-icon>
       </button>
-      <button mat-icon-button color="accent" aria-label="Example icon-button with a heart icon">
+      <button mat-icon-button color="accent" aria-label="Remind me" (click)="showReminderDialog()">
         <mat-icon>add_alarm</mat-icon>
       </button>
       <button mat-icon-button color="accent" aria-label="Delete Note" (click)="delete()">
@@ -36,7 +36,7 @@
     </mat-card-actions>
   </mat-card>
 
-  
+
   <form [formGroup] = "uploadForm" style="visibility: hidden;">      
     <div>
       <input id="fileInput"  type="file" accept="image/jpeg"  name="image" (change)="onFileSelect($event)" #fileInput/>

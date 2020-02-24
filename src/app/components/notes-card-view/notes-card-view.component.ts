@@ -1,10 +1,10 @@
-import { Component, OnInit, Input,ElementRef,ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { Note } from 'src/app/model/note';
 import { NotesService } from 'src/app/services/notes.service';
 import { DataService } from 'src/app/services/data.service';
-import { environment } from '../../../environments/environment';
-//import { SelectorMatcher } from '@angular/compiler';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ReminderComponent } from '../reminder/reminder.component';
 
 @Component({
   selector: 'notes-card-view',
@@ -19,17 +19,18 @@ export class NotesCardViewComponent implements OnInit {
 
   /* constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { } */
 
-  constructor(private notesService: NotesService, private dataService: DataService,private formBuilder: FormBuilder) {
+  constructor(
+    public dialog: MatDialog,
+    private notesService: NotesService,
+    private dataService: DataService,
+    private formBuilder: FormBuilder) {
     this.uploadForm = this.formBuilder.group({
       image: [''],
       note_id: ['']
     });
-   }
-
-  ngOnInit(): void {
-    //alert(JSON.stringify(this.note));
-    //this.imageURL = environment.backendApiUrl + "/api/notes/file/" + this.note.id;
   }
+
+  ngOnInit(): void {}
 
   delete() {
     this.notesService.DeleteNote(this.note.id).subscribe(res => {
@@ -40,8 +41,6 @@ export class NotesCardViewComponent implements OnInit {
   }
 
   openFile() {
-    //alert(JSON.stringify(this.note));
-    //document.querySelector('input').click()
     this.fileInputElement.nativeElement.click()
   }
 
@@ -54,7 +53,6 @@ export class NotesCardViewComponent implements OnInit {
   }
 
   onSubmit() {
-    //alert(">>>>>>"+this.note.id)
     const formData = new FormData();
     formData.append('file', this.uploadForm.get('image').value);
     formData.append('note_id', this.note.id.toString());
@@ -63,6 +61,18 @@ export class NotesCardViewComponent implements OnInit {
       this.notesService.GetUserNotes().subscribe(res => {
         this.dataService.updateUserNotes(res);
       });
+    });
+  }
+
+  showReminderDialog() {
+    const dialogRef = this.dialog.open(ReminderComponent, {
+      width: '400px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //this.animal = result;
     });
   }
 

@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { FormBuilder,FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
+import {MatDialog} from '@angular/material/dialog';
+import { RegisterComponent } from '../register/register.component';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -38,7 +40,8 @@ export class LoginComponent implements OnInit {
     private authSerive: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private dialog:MatDialog
   ) {
     /* this.loginForm = this.formBuilder.group({
       email: '',
@@ -87,14 +90,15 @@ export class LoginComponent implements OnInit {
     //console.warn('Your order has been submitted', customerData);
   }
 
-  // Checking if token is set
-  isLoggedIn() {
-    return localStorage.getItem('token') != null;
-  }
- 
-  // After clearing localStorage redirect to login screen
-  logout() {
-    localStorage.clear();
-    this.router.navigate(['/login']);
+  createAccount(){
+    const dialogRef = this.dialog.open(RegisterComponent, {
+      width: '400px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //this.animal = result;
+    });
   }
 }

@@ -60,6 +60,17 @@ export class NotesService {
     )
   }
 
+  
+  Search(text): Observable<Note[]> {
+    var url = environment.backendApiUrl  + '/api/notes/search?text='+text+'&user_id='+ localStorage.getItem('user_id')
+    //alert(url)
+    return this.http.get<Note[]>(url)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    )
+  }
+
   // Error handling
   errorHandl(error) {
     
