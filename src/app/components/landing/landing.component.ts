@@ -2,6 +2,14 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { NotesService } from 'src/app/services/notes.service';
 import { DataService } from 'src/app/services/data.service';
 import { Note } from 'src/app/model/note';
+enum Priorities {
+  Critical = "CRITICAL",
+  High = "HIGH",
+  Normal = "NORMAL",
+  Low = "LOW",
+  None = "NONE"
+}
+
 
 @Component({
   selector: 'notes-landing',
@@ -13,8 +21,11 @@ export class LandingComponent implements OnInit {
   breakpoint = 3;
 
   notes: Note[];
-  
-  constructor(private notesService: NotesService,
+  selectedValue : String[] = ["NONE"]
+  toggleOptions: Array<Priorities> = [Priorities.Critical, Priorities.High,Priorities.Normal,Priorities.Low,Priorities.None];
+
+
+  constructor(private noteService: NotesService,
     private dataService: DataService,
     private zone:NgZone) { }
 
@@ -31,7 +42,7 @@ export class LandingComponent implements OnInit {
       
     });
 
-    this.notesService.GetUserNotes().subscribe(res => {
+    this.noteService.GetUserNotes().subscribe(res => {
       this.dataService.updateUserNotes(res);
     });
   }
@@ -50,6 +61,16 @@ export class LandingComponent implements OnInit {
     if (window.innerWidth >= 800) {
       this.breakpoint = 3
     }
+  }
+
+
+  selectionChanged(item) {
+    console.log("Selected value: " + item.value);
+
+    this.noteService.Search("", item.value).subscribe(res => {
+      this.dataService.updateUserNotes(res);
+    });
+    //this.selectedValue.forEach(i => console.log(`Included Item: ${i}`));
   }
 
 }

@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 /* Angular Flex Layout */
 import { FlexLayoutModule } from "@angular/flex-layout";
 
+import { ColorPickerModule } from 'ngx-color-picker';
+
 /* Components */
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
@@ -52,7 +54,8 @@ import { SearchComponent } from './components/search/search.component';
     AngularMaterialModule,
     FlexLayoutModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ColorPickerModule
   ],
   providers: [AuthService, NotesService, DataService],
   bootstrap: [AppComponent],

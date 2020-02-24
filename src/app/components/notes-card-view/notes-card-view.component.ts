@@ -16,7 +16,6 @@ export class NotesCardViewComponent implements OnInit {
   fileData: File = null;
   uploadForm: FormGroup;
   @Input() note: Note;
-
   /* constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { } */
 
   constructor(
@@ -95,4 +94,8 @@ export class NotesCardViewComponent implements OnInit {
     //this.preview();
   }
 
+  setColor(color){
+    this.note.color=color;
+    this.notesService.UpdateNote(this.note).subscribe(res => {});
+  }
 }

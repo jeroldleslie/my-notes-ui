@@ -1,9 +1,17 @@
 import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Note } from 'src/app/model/note';
-import { FormBuilder,FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { NotesService } from 'src/app/services/notes.service';
 import { DataService } from 'src/app/services/data.service';
+
+enum Priorities {
+  Critical = "CRITICAL",
+  High = "HIGH",
+  Normal = "NORMAL",
+  Low = "LOW",
+  None = "NONE"
+}
 
 @Component({
   selector: 'notes-notes-create-form',
@@ -14,28 +22,34 @@ export class NotesCreateFormComponent implements OnInit {
   @ViewChild('title') titleElement: ElementRef;
   @ViewChild('content') contentElement: ElementRef;
   addNoteForm;
-  loading=false;
+  loading = false;
   title = new FormControl('', []);
   content = new FormControl('', []);
+  critical = Priorities.Critical;
+  high = Priorities.High;
+  normal = Priorities.Normal;
+  low = Priorities.Low;
+  none = Priorities.None;
+  priorityControl = new FormControl(Priorities.None);
   constructor(
-    private dataService:DataService,
-    private notesService:NotesService,
+    private dataService: DataService,
+    private notesService: NotesService,
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<NotesCreateFormComponent>,
-    @Inject(MAT_DIALOG_DATA) 
+    @Inject(MAT_DIALOG_DATA)
     public data: Note) {
-      this.addNoteForm = this.formBuilder.group({
-        title: this.title,
-        content: this.content,
-      });
-    }
+    this.addNoteForm = this.formBuilder.group({
+      title: this.title,
+      content: this.content,
+      priority: this.priorityControl
+    });
+  }
 
   ngOnInit(): void {
     //this.title.nativeElement.className = null;
-
   }
-  
-  onSubmit(){
+
+  onSubmit() {
     if (this.addNoteForm.valid) {
       this.loading = true;
       this.notesService.CreateNote(this.addNoteForm.value).subscribe(res => {

@@ -1,11 +1,16 @@
-.example-card {
+/* .example-card {
     max-width: 300px;
     min-width: 300px;
-    min-height: 160px;
+    
+    
     cursor: pointer;
-  }
+  } */
   
-  .example-header-image {
+  /* .example-header-image {
     background-image: url('http://localhost:8000/api/notes/file/10');
     background-size: cover;
-  }
+  } */
+
+.note-card {
+    background-color: #ffffff;
+}

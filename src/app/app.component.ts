@@ -4,6 +4,8 @@ import {NotesCreateFormComponent} from './components/notes-create-form/notes-cre
 import { AuthService } from './services/auth.service';
 import { NotesService } from './services/notes.service';
 import { DataService } from './services/data.service';
+//import { FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -12,12 +14,14 @@ import { DataService } from './services/data.service';
 })
 export class AppComponent {
   profileImg;
-
+  
+  color = '#ffffff';
   constructor(public dialog: MatDialog,
     private authService:AuthService,
     private noteService:NotesService,
     private dataService:DataService) {}
 
+    
   showCreateNoteDialog() {
     const dialogRef = this.dialog.open(NotesCreateFormComponent, {
       width: '800px',

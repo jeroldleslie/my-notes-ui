@@ -11,4 +11,5 @@ export class Note {
     user_id: BigInteger;
     image_url: string;
     image_id: BigInteger;
+    color: string;
 }

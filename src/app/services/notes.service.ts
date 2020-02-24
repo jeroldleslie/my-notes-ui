@@ -23,6 +23,14 @@ export class NotesService {
     })
   }
 
+  removeFalsy(obj){
+    let newObj = {};
+    Object.keys(obj).forEach((prop) => {
+      if (obj[prop]) { newObj[prop] = obj[prop]; }
+    });
+    return newObj;
+  };
+
   // Signin
   CreateNote(data): Observable<Note> {
     data.user_id=parseInt(localStorage.getItem('user_id'));
@@ -32,6 +40,7 @@ export class NotesService {
       catchError(this.errorHandl)
     )
   }
+
   GetUserNotes(): Observable<Note[]> {
     var url = environment.backendApiUrl  + '/api/notes/user_notes/'+ localStorage.getItem('user_id')
     //alert(url)
@@ -50,6 +59,15 @@ export class NotesService {
     )
   }
 
+  UpdateNote(data): Observable<any> {
+    data = this.removeFalsy(data);
+    return this.http.put<Note>(environment.backendApiUrl  + '/api/notes/'+ data.id , JSON.stringify(data), this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    )
+  }
+
   ImageUpload(formData): Observable<any> {
 
     //window.alert(JSON.stringify(formData));
@@ -61,8 +79,8 @@ export class NotesService {
   }
 
   
-  Search(text): Observable<Note[]> {
-    var url = environment.backendApiUrl  + '/api/notes/search?text='+text+'&user_id='+ localStorage.getItem('user_id')
+  Search(text, priority): Observable<Note[]> {
+    var url = environment.backendApiUrl  + '/api/notes/search?text='+text+'&priority='+priority+'&user_id='+ localStorage.getItem('user_id')
     //alert(url)
     return this.http.get<Note[]>(url)
     .pipe(

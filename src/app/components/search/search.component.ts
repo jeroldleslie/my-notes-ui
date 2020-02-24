@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit {
   search(){
     //alert(this.searchInput.nativeElement.value);
     var text = this.searchInput.nativeElement.value;
-    this.noteService.Search(text.trim()).subscribe(res => {
+    this.noteService.Search(text.trim(), "").subscribe(res => {
       this.dataService.updateUserNotes(res);
     });
   }

@@ -1,4 +1,4 @@
-<mat-card class="example-card">
+<mat-card [style.background]="note.color">
     <mat-card-header>
       <!-- <div mat-card-avatar class="example-header-image"></div>  -->
 
@@ -8,20 +8,30 @@
     </mat-card-header>
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
     <mat-card-content>
-      <p>
-        {{ note.content | truncate:120 }}
-      </p>
+        <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+            <div fxFlex>
+                {{ note.content | truncate:120 }}
+            </div>
+            <div fxFlex>
+                <mat-chip-list aria-label="Tag">
+                    <mat-chip>morning</mat-chip>
+                    <mat-chip>nice note</mat-chip>
+                    <mat-chip>important</mat-chip>
+                  </mat-chip-list>
+              </div>
+        </div>
       
-      <div fxFlex></div>
+        <div fxFlex></div>
     </mat-card-content>
     <mat-card-actions>
       <!-- <button mat-button>LIKE</button>
       <button mat-button>SHARE</button> -->
 
       <div fxFlex></div>
-      <button mat-icon-button color="accent" aria-label="Favorite">
-        <mat-icon>star</mat-icon>
+      <button mat-icon-button color="accent" [matMenuTriggerFor]="colorMenu" aria-label="Favorite">
+        <mat-icon>color_lens</mat-icon>
       </button>
+
       <button mat-icon-button color="accent" aria-label="Add Image" (click)="openFile()">
         <!-- <input id="fileinput" type="file" style="display:none" (change)="handle($event)"> -->
         <!-- <input value="10" style="display:none" id="noteid" name="noteid" formControlName="noteid"> -->
@@ -35,6 +45,13 @@
       </button>
     </mat-card-actions>
   </mat-card>
+  <mat-menu #colorMenu="matMenu">
+    <button mat-menu-item style="background-color: #e6ee9c;" (click)="setColor('#e6ee9c')"></button>
+    <button mat-menu-item style="background-color: #9575cd;" (click)="setColor('#9575cd')"></button>
+    <button mat-menu-item style="background-color: #90caf9;" (click)="setColor('#90caf9')"></button>
+    <button mat-menu-item style="background-color: #ffab91;" (click)="setColor('#ffab91')"></button>
+    <button mat-menu-item style="background-color: #81c784;" (click)="setColor('#81c784')"></button>
+  </mat-menu>
 
 
   <form [formGroup] = "uploadForm" style="visibility: hidden;">      
