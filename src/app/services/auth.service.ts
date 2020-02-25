@@ -4,6 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { LoginResponse, User } from '../model/auth';
+import { Router } from '@angular/router';
+import { DataService } from './data.service';
 
 
 @Injectable({
@@ -11,7 +13,10 @@ import { LoginResponse, User } from '../model/auth';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient, 
+    private router:Router,
+    private dataService:DataService) { }
   // Http Headers
   httpOptions = {
     headers: new HttpHeaders({
@@ -46,14 +51,20 @@ export class AuthService {
     )
   }
 
+  // Checking if token is set
+  isLoggedIn() {
+    return localStorage.getItem('token') != null;
+  }
+ 
+  // After clearing localStorage redirect to login screen
+  logout() {
+    localStorage.clear();
+    this.dataService.updateToolbarVisibility(false);
+    this.router.navigate(['/login']);
+  }
+
   // Error handling
   errorHandl(error) {
-    console.log("eoorrrr");
-    console.log("eoorrrr");
-    console.log("eoorrrr");
-    console.log("eoorrrr");
-    console.log("eoorrrr");
-    console.log("eoorrrr");
     
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

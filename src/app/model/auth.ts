@@ -3,6 +3,7 @@ export class LoginResponse {
     message: string;
     token: string;
     user: string;
+    user_id: BigInteger;
 }
 
 export class User {

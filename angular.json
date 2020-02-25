@@ -15,9 +15,12 @@
       "prefix": "notes",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/my-notes-ui",
+            "customWebpackConfig":{
+              "path": "./extra-webpack.config.js"
+            },
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",

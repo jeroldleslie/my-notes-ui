@@ -1,2 +1,21 @@
-<p>landing works!</p>
-<button mat-button>Click me!</button>
+<!-- <div fxLayout="column" fxLayoutAlign="center center" fxFill> -->
+
+<!-- <label>hello</label>
+    <notes-card-view></notes-card-view> -->
+<div fxLayout="row" fxLayoutAlign="center center" class="toggle-group">
+    <mat-button-toggle-group [(value)]="selectedValue" #group="matButtonToggleGroup">
+        <mat-button-toggle *ngFor="let item of toggleOptions;" [value]="item" (change)="selectionChanged($event)">
+            {{item}}
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
+
+<mat-divider></mat-divider>
+<mat-grid-list [cols]="breakpoint" gutterSize="5px" rowHeight="300px" (window:resize)="onResize($event)">
+    <ng-container *ngFor="let note of notes">
+        <mat-grid-tile>
+            <notes-card-view [note]="note"></notes-card-view>
+        </mat-grid-tile>
+    </ng-container>
+</mat-grid-list>
+<!-- </div>  -->

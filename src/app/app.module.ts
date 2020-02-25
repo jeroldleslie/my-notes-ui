@@ -25,13 +25,24 @@ import { RegisterComponent } from './components/register/register.component';
 
 
 import { AuthService } from './services/auth.service';
-
+import { NotesCardViewComponent } from './components/notes-card-view/notes-card-view.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { NotesCreateFormComponent } from './components/notes-create-form/notes-create-form.component';
+import { NotesService } from './services/notes.service';
+import { DataService } from './services/data.service';
+import { ReminderComponent } from './components/reminder/reminder.component';
+import { SearchComponent } from './components/search/search.component';
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotesCardViewComponent,
+    TruncatePipe,
+    NotesCreateFormComponent,
+    ReminderComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +54,7 @@ import { AuthService } from './services/auth.service';
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, NotesService, DataService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,0 +1,37 @@
+<div fxFlex fxLayout="column" fxLayoutAlign="center center">
+    <mat-card class="notes-card" fxFill>
+        <mat-card-header>
+            <!-- <div mat-card-avatar class="example-header-image"></div> -->
+            <mat-card-title>Reminder</mat-card-title>
+            <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+        </mat-card-header>
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+        <form class="example-form" [formGroup]="reminderForm" class="notes-full-width" (ngSubmit)="onSubmit()">
+            <mat-card-content fxFill>
+                <div class="vertical-space"></div>
+                <div fxLayout="column" fxLayoutAlign="center center"  fxFill>
+                    <mat-form-field fxFill>
+                        <mat-label>Remind from</mat-label>
+                        <input matInput [matDatepicker]="remindFrom" [formControl]="remindFromControl" [max]="remindUntilControl.value">
+                        <mat-datepicker-toggle matSuffix [for]="remindFrom"></mat-datepicker-toggle>
+                        <mat-datepicker #remindFrom></mat-datepicker>
+                      </mat-form-field>
+                      <mat-form-field  fxFill>
+                        <mat-label>Remind until</mat-label>
+                        <input matInput [matDatepicker]="remindUntil" [formControl]="remindUntilControl" [min]="remindFromControl.value">
+                        <mat-datepicker-toggle matSuffix [for]="remindUntil"></mat-datepicker-toggle>
+                        <mat-datepicker #remindUntil></mat-datepicker>
+                      </mat-form-field>
+                </div>
+
+            </mat-card-content>
+        </form>
+        <mat-card-actions>
+            <div fxFlex></div>
+            <button mat-raised-button color="accent" type="submit" (click)="setReminder()">Set</button>
+            <!-- <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button> -->
+        </mat-card-actions>
+    </mat-card>
+    
+</div>

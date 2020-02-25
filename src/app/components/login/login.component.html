@@ -1,55 +1,63 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
 
-    <mat-card class="box">
+<div fxFlex fxLayout="column" fxLayoutAlign="center center">
+    <div style="height: 50px;"></div>
+    <mat-card class="example-card">
         <mat-card-header>
             <mat-card-title>Signin</mat-card-title>
         </mat-card-header>
-
-        <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="example-full-width">
             <mat-card-content>
-                <!-- <mat-form-field class="example-full-width">
-            <input id="email" name="email" matInput placeholder="Email" formControlName="email">
-          </mat-form-field>
-  
-          <mat-form-field class="example-full-width">
-            <input  id="password" name="password"  matInput placeholder="Password" formControlName="password">
-          </mat-form-field> -->
-                <mat-form-field appearance="outline" class="example-full-width">
-                    <mat-label>Email</mat-label>
-                    <input matInput formControlName="email" [errorStateMatcher]="matcher"
-                        placeholder="Ex. pat@example.com" id="email" required>
-                    <mat-icon matSuffix>perm_identity</mat-icon>
-                    <mat-hint>Enter email</mat-hint>
-                    <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
-                        Please enter a valid email address
-                    </mat-error>
-                    <mat-error *ngIf="email.hasError('required')">
-                        Email is <strong>required</strong>
-                    </mat-error>
-                </mat-form-field>
+                <div class="vertical-space"></div>
+                <div fxLayout="column" fxLayoutAlign="center center">
+                    <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" [errorStateMatcher]="matcher"
+                            placeholder="Ex. pat@example.com" id="email" required>
+                        <mat-icon matSuffix>perm_identity</mat-icon>
+                        <mat-hint>Enter email</mat-hint>
+                        <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="email.hasError('required')">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
 
-                <mat-form-field appearance="outline" class="example-full-width">
-                    <mat-label>Password</mat-label>
-                    <input matInput placeholder="Placeholder" type="password" formControlName="password"
-                        [errorStateMatcher]="matcher" id="password" required>
-                    <mat-icon matSuffix>vpn_key</mat-icon>
-                    <mat-hint>Enter password</mat-hint>
-                    <mat-error *ngIf="password.hasError('required')">
-                        Password is <strong>required</strong>
-                    </mat-error>
-                </mat-form-field>
-
+                    <div class="vertical-space"></div>
+                    <mat-form-field appearance="outline" class="example-full-width" class="form-field">
+                        <mat-label>Password</mat-label>
+                        <input matInput placeholder="Placeholder" type="password" formControlName="password"
+                            [errorStateMatcher]="matcher" id="password" required>
+                        <mat-icon matSuffix>vpn_key</mat-icon>
+                        <mat-hint>Enter password</mat-hint>
+                        <mat-error *ngIf="password.hasError('required')">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="vertical-space"></div>
+                    <div fxLayout="row" fxLayoutAlign="end center" class="form-field">
+                        <button [disabled]="loading" mat-raised-button color="accent" type="submit" class="form-field">
+                            <mat-icon>
+                                <mat-spinner color="accent" *ngIf="loading" diameter="20">
+                                </mat-spinner>
+                            </mat-icon>Signin
+                        </button>
+                    </div>
+                    <div class="vertical-space"></div>
                     <div fxLayout="row" fxLayoutAlign="center center" class="example-full-width">
                         <mat-error *ngIf="errorMessage">
                             {{errorMessage | uppercase}}
-                </mat-error>
+                        </mat-error>
                     </div>
-                
-                
-                    
-            </mat-card-content>
-            <button mat-button color="accent" type="submit">Signin</button>
-        </form>
-    </mat-card>
 
+                </div>
+            </mat-card-content>
+        </form>
+        <div fxLayout="column" fxLayoutAlign="center center" fxFill>
+        <!-- <div class="mat-typography"> -->
+            <h3 class="mat-subheading-2">Don't have an account?</h3>
+            <button mat-button color="accent" (click)="createAccount()">Create account</button>
+          <!-- </div> -->
+        </div>
+    </mat-card>
 </div>

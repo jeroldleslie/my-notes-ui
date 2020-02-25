@@ -1,28 +1,54 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-    <mat-card class="box">
-      <mat-card-header>
-        <mat-card-title>Register</mat-card-title>
-      </mat-card-header>
-  
-      <form class="example-form" [formGroup]="regForm" (ngSubmit)="onSubmit(regForm.value)">
-  
-        <mat-card-content>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Name" formControlName="name" id="name">
+<div fxFlex fxLayout="column" fxLayoutAlign="center center">
+  <mat-card fxFill>
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="regForm" class="example-full-width" (ngSubmit)="onSubmit()">
+
+      <mat-card-content fxFill>
+        <div class="vertical-space"></div>
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <mat-form-field fxFill>
+            <input matInput placeholder="Name" formControlName="name" id="name" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="name.hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
-  
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email" formControlName="email" id="email">
+          <div class="vertical-space"></div>
+          <mat-form-field fxFill>
+            <input matInput placeholder="Email" formControlName="email" id="email" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="email.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
-  
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Password" formControlName="password" id="password">
+          <div class="vertical-space"></div>
+          <mat-form-field fxFill>
+            <input matInput placeholder="Password" formControlName="password" id="password" type="password"
+              [errorStateMatcher]="matcher">
+              <mat-error *ngIf="email.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
           </mat-form-field>
-  
-        </mat-card-content>
-  
-        <button mat-button color="accent" type="submit">Register</button>
-      </form>
-    </mat-card>
-  </div>
-  
+          <div class="vertical-space"></div>
+          <!-- <button mat-button color="accent" type="submit">Register</button> -->
+          <div fxLayout="row" fxLayoutAlign="center center" fxFill>
+            <button [disabled]="loading" mat-raised-button color="accent" type="submit">
+              <mat-icon style="display: none;">
+                <mat-spinner color="accent" *ngIf="loading" diameter="20">
+                </mat-spinner>
+              </mat-icon>Register
+            </button>
+          </div>
+        </div>
+
+
+      </mat-card-content>
+
+
+    </form>
+  </mat-card>
+</div>
