@@ -15,8 +15,11 @@
       "prefix": "notes",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig":{
+              "path": "./extra-webpack.config.js"
+            },
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -132,4 +135,3 @@
     "analytics": "e3cdde90-be91-40f8-aaf1-ada05745d9f6"
   }
 }
-

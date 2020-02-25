@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./
+      args:
+        env: prod
+      dockerfile: Dockerfile
+    ports:
+      - "8081:80"
+    environment:
+      - API_URL=${API_URL}
+
+volumes:
+  cache:
