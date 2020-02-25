@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {MatDialog} from '@angular/material/dialog';
 import { RegisterComponent } from '../register/register.component';
+import { DataService } from 'src/app/services/data.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -41,7 +42,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private dataService:DataService
   ) {
     /* this.loginForm = this.formBuilder.group({
       email: '',
@@ -71,6 +73,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('name', res.user);
           localStorage.setItem('token', res.token);
           localStorage.setItem('user_id', res.user_id.toString());
+          this.dataService.updateToolbarVisibility(true);
           this.ngZone.run(() => this.router.navigateByUrl('/home'))
         }else if (res.status == "FAILURE") {
           this.errorMessage = res.message
@@ -86,7 +89,7 @@ export class LoginComponent implements OnInit {
       });
     }
     
-
+    this.loading = false;
     //console.warn('Your order has been submitted', customerData);
   }
 

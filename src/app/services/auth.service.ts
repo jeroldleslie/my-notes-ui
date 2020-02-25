@@ -5,6 +5,7 @@ import { retry, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { LoginResponse, User } from '../model/auth';
 import { Router } from '@angular/router';
+import { DataService } from './data.service';
 
 
 @Injectable({
@@ -12,7 +13,10 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private router:Router) { }
+  constructor(
+    private http: HttpClient, 
+    private router:Router,
+    private dataService:DataService) { }
   // Http Headers
   httpOptions = {
     headers: new HttpHeaders({
@@ -55,6 +59,7 @@ export class AuthService {
   // After clearing localStorage redirect to login screen
   logout() {
     localStorage.clear();
+    this.dataService.updateToolbarVisibility(false);
     this.router.navigate(['/login']);
   }
 

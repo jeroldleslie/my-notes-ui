@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendApiUrl: $ENV.API_URL
+  backendApiUrl: process.env.API_URL
 };
