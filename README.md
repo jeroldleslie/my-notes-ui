@@ -17,7 +17,7 @@ Run the command below to clone the application
 #git clone https://github.com/jeroldleslie/my-notes-ui
 ``` 
 
-## How to run using script?
+## Steps to run
 After checking out the application to your local machine go to the application directory
 ```
 #cd <path-to-your-project>/my-notes-ui
