@@ -1,11 +1,11 @@
 <mat-card [style.background]="note.color" class="notes-card-view">
-  <mat-card-header>
+  <mat-card-header (click)="showNote(note)">
     <!-- <img mat-card-avatar src="{{note.image_url || 'assets/img/default.jpg'}}" alt=""> -->
     <mat-card-title>{{ note.title }}</mat-card-title>
     <mat-card-subtitle>Created: {{note.created_at | date:'short':'UTC'}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image *ngIf="note.image_url" src="{{note.image_url}}">
-  <mat-card-content>
+  <img mat-card-image *ngIf="note.image_url" src="{{note.image_url}}" (click)="showNote(note)">
+  <mat-card-content (click)="showNote(note)">
     <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
       <div fxFlex>
         {{ note.content | truncate:120 }}

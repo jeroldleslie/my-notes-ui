@@ -5,6 +5,10 @@ import { DataService } from 'src/app/services/data.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ReminderComponent } from '../reminder/reminder.component';
+import { NotesMainViewComponent } from '../notes-main-view/notes-main-view.component';
+export interface DialogData {
+  note: Note;
+}
 
 @Component({
   selector: 'notes-card-view',
@@ -88,5 +92,14 @@ export class NotesCardViewComponent implements OnInit {
   setBGColor(color) {
     this.note.color = color;
     this.notesService.UpdateNote(this.note).subscribe(res => { });
+  }
+
+  showNote(note: Note) {
+    //alert(note.id);
+    const dialogRef = this.dialog.open(NotesMainViewComponent, {
+      maxWidth: '500px',
+      maxHeight: '600px',
+      data: { note: this.note}
+    });
   }
 }

@@ -69,4 +69,7 @@ export class LandingComponent implements OnInit {
     //this.selectedValue.forEach(i => console.log(`Included Item: ${i}`));
   }
 
+
+ 
+
 }

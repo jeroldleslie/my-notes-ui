@@ -32,6 +32,7 @@ import { NotesService } from './services/notes.service';
 import { DataService } from './services/data.service';
 import { ReminderComponent } from './components/reminder/reminder.component';
 import { SearchComponent } from './components/search/search.component';
+import { NotesMainViewComponent } from './components/notes-main-view/notes-main-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { SearchComponent } from './components/search/search.component';
     NotesCreateFormComponent,
     ReminderComponent,
     SearchComponent,
+    NotesMainViewComponent,
   ],
   imports: [
     BrowserModule,
