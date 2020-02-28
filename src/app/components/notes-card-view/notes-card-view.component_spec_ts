@@ -1,0 +1,41 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { NotesCardViewComponent } from './notes-card-view.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DataService } from 'src/app/services/data.service';
+import { NotesService } from 'src/app/services/notes.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TruncatePipe } from 'src/app/pipes/truncate.pipe';
+import { MatMenuModule } from '@angular/material/menu';
+
+describe('NotesCardViewComponent', () => {
+  let component: NotesCardViewComponent;
+  let fixture: ComponentFixture<NotesCardViewComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        NotesCardViewComponent,
+        TruncatePipe],
+      imports: [
+        MatDialogModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatMenuModule],
+      providers: [NotesService, DataService]
+    })
+      .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(NotesCardViewComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

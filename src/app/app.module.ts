@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 /* Routing */
 import { AppRoutingModule } from './app-routing.module';
@@ -51,7 +51,7 @@ import { SearchComponent } from './components/search/search.component';
     HttpClientModule,
     AngularMaterialModule,
     FlexLayoutModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [AuthService, NotesService, DataService],

@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
    imports: [
@@ -32,7 +33,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
       MatChipsModule,
       MatCardModule,
       MatProgressSpinnerModule,
-      MatButtonToggleModule
+      MatButtonToggleModule,
+      MatDialogModule
    ],
    exports: [
       MatMenuModule,

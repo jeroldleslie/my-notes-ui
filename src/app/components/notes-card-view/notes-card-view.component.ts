@@ -16,7 +16,6 @@ export class NotesCardViewComponent implements OnInit {
   fileData: File = null;
   uploadForm: FormGroup;
   @Input() note: Note;
-  /* constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { } */
 
   constructor(
     public dialog: MatDialog,
@@ -29,7 +28,7 @@ export class NotesCardViewComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   delete() {
     this.notesService.DeleteNote(this.note.id).subscribe(res => {
@@ -71,31 +70,23 @@ export class NotesCardViewComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      //this.animal = result;
     });
   }
 
-  /* handle(e){
-    console.log('Change input file')
-  } */
   handle(fileInput) {
-    //alert(JSON.stringify(this.note));
-    /* alert(this.noteIDElement.nativeElement.value()); */
     this.fileData = <File>fileInput.target.files[0];
     const formData = new FormData();
     formData.append('file', this.fileData);
     formData.append('note_id', this.note.id.toString());
-    //window.alert(this.note.id);
     this.notesService.ImageUpload(formData).subscribe(res => {
       this.notesService.GetUserNotes().subscribe(res => {
         this.dataService.updateUserNotes(res);
       });
     });
-    //this.preview();
   }
 
-  setColor(color){
-    this.note.color=color;
-    this.notesService.UpdateNote(this.note).subscribe(res => {});
+  setBGColor(color) {
+    this.note.color = color;
+    this.notesService.UpdateNote(this.note).subscribe(res => { });
   }
 }

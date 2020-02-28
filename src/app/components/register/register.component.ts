@@ -2,7 +2,7 @@ import { Component, OnInit, NgZone, Inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from 'src/app/model/auth';
 import { ErrorStateMatcher } from '@angular/material/core';
 
@@ -20,7 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  loading =false;
+  loading = false;
   regForm;
   matcher = new MyErrorStateMatcher();
 
@@ -34,16 +34,13 @@ export class RegisterComponent implements OnInit {
   name = new FormControl('', [
     Validators.required,
   ]);
-  
+
   constructor(
     private authSerive: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
-    public dialogRef: MatDialogRef<RegisterComponent>,
-    @Inject(MAT_DIALOG_DATA) 
-    public data: User
-  ) {
+    public dialogRef: MatDialogRef<RegisterComponent>) {
     this.regForm = this.formBuilder.group({
       name: this.name,
       email: this.email,
@@ -65,10 +62,10 @@ export class RegisterComponent implements OnInit {
         this.ngZone.run(() => this.router.navigateByUrl('/login'))
         /* } */
         //this.ngZone.run(() => this.router.navigateByUrl('/issues-list'))
-        
+
       });
     }
-    
+
 
     //console.warn('Your order has been submitted', customerData);
   }

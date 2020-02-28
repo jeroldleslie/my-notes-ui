@@ -1,11 +1,10 @@
-
 <div fxFlex fxLayout="column" fxLayoutAlign="center center">
     <div style="height: 50px;"></div>
-    <mat-card class="example-card">
+    <mat-card class="login-card">
         <mat-card-header>
             <mat-card-title>Signin</mat-card-title>
         </mat-card-header>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="example-full-width">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <mat-card-content>
                 <div class="vertical-space"></div>
                 <div fxLayout="column" fxLayoutAlign="center center">
@@ -24,7 +23,7 @@
                     </mat-form-field>
 
                     <div class="vertical-space"></div>
-                    <mat-form-field appearance="outline" class="example-full-width" class="form-field">
+                    <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Password</mat-label>
                         <input matInput placeholder="Placeholder" type="password" formControlName="password"
                             [errorStateMatcher]="matcher" id="password" required>
@@ -44,7 +43,7 @@
                         </button>
                     </div>
                     <div class="vertical-space"></div>
-                    <div fxLayout="row" fxLayoutAlign="center center" class="example-full-width">
+                    <div fxLayout="row" fxLayoutAlign="center center">
                         <mat-error *ngIf="errorMessage">
                             {{errorMessage | uppercase}}
                         </mat-error>
@@ -54,10 +53,8 @@
             </mat-card-content>
         </form>
         <div fxLayout="column" fxLayoutAlign="center center" fxFill>
-        <!-- <div class="mat-typography"> -->
             <h3 class="mat-subheading-2">Don't have an account?</h3>
             <button mat-button color="accent" (click)="createAccount()">Create account</button>
-          <!-- </div> -->
         </div>
     </mat-card>
 </div>

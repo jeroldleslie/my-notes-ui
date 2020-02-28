@@ -17,17 +17,17 @@ export class DataService {
 
 
   updateUserNotes(notes: Note[]) {
-    for(let note of notes) {
-      if (note.image_id){
-        note.image_url = environment.backendApiUrl + "/api/notes/file/" + note.image_id +"?random+\=" + Math.random();
+    for (let note of notes) {
+      if (note.image_id) {
+        note.image_url = environment.backendApiUrl + "/api/notes/file/" + note.image_id + "?random+\=" + Math.random();
       }
     }
-   
+
     this.notesSource.next(notes)
   }
 
 
-  updateToolbarVisibility(show:boolean) {
+  updateToolbarVisibility(show: boolean) {
     this.toolBarSubject.next(show)
   }
 
