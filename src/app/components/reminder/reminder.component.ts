@@ -16,7 +16,7 @@ export class ReminderComponent implements OnInit {
   maxDate: Date;
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<ReminderComponent>) { 
+    public dialogRef: MatDialogRef<ReminderComponent>) {
     this.reminderForm = this.formBuilder.group({
       remindFrom: this.remindFromControl,
       remindUntil: this.remindUntilControl
@@ -30,15 +30,15 @@ export class ReminderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(){
+  onSubmit() {
     this.dialogRef.close();
   }
 
-  setReminder(){
+  setReminder() {
     this.dialogRef.close();
   }
 
-  remindFromChange(e){
-    
+  remindFromChange(e) {
+
   }
 }

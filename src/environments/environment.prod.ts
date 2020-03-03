@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendApiUrl: process.env.API_URL
+  backendApiUrl: "http://192.168.99.102:8000"
 };

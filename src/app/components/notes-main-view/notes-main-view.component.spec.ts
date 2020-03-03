@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotesCreateFormComponent } from './notes-create-form.component';
+import { NotesMainViewComponent } from './notes-main-view.component';
 
-describe('NotesCreateFormComponent', () => {
-  let component: NotesCreateFormComponent;
-  let fixture: ComponentFixture<NotesCreateFormComponent>;
+describe('NotesMainViewComponent', () => {
+  let component: NotesMainViewComponent;
+  let fixture: ComponentFixture<NotesMainViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotesCreateFormComponent ]
+      declarations: [ NotesMainViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotesCreateFormComponent);
+    fixture = TestBed.createComponent(NotesMainViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

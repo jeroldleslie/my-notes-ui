@@ -9,19 +9,19 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class SearchComponent implements OnInit {
 
-  @ViewChild("searchInput") searchInput:ElementRef;
+  @ViewChild("searchInput") searchInput: ElementRef;
 
   constructor(
-    private noteService:NotesService,
-    private dataService:DataService) { }
+    private noteService: NotesService,
+    private dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
-  onEnterKey(){
+  onEnterKey() {
     this.search();
   }
-  search(){
+  search() {
     //alert(this.searchInput.nativeElement.value);
     var text = this.searchInput.nativeElement.value;
     this.noteService.Search(text.trim(), "").subscribe(res => {

@@ -3,31 +3,31 @@
     <mat-toolbar-row>
       <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px" fxFill>
         <p style="font-size: 12px; color: black;"></p>
-        
+
         <div fxFlex>
-          <img src="assets/img/note_logo.png" alt="logo" class="note-logo"> 
+          <img src="assets/img/note_logo.png" alt="logo" class="note-logo">
         </div>
-        
+
 
         <p style="font-size: 30px; color: #616161;">NOTES</p>
         <span style="width: 100%;"></span>
-        <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px" *ngIf = "isToolbarShow">
+        <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px" *ngIf="isToolbarShow">
           <notes-search></notes-search>
           <span style="width: 100px;"></span>
           <button mat-icon-button disabled color="accent" aria-label="Example icon-button with a heart icon">
             <mat-icon>star</mat-icon>
           </button>
-          <button mat-icon-button color="accent" aria-label="Example icon-button with a heart icon">
+          <button mat-icon-button disabled color="accent" aria-label="Example icon-button with a heart icon">
             <mat-icon>schedule</mat-icon>
           </button>
           <button mat-icon-button color="accent" aria-label="Reload all notes" (click)="reloadAllNotes()">
             <mat-icon>description</mat-icon>
           </button>
-  
+
           <button mat-mini-fab aria-label="Add Note" (click)="showCreateNoteDialog()">
             <mat-icon>post_add</mat-icon>
           </button>
-  
+
           <img class="profile-avatar" src="{{ profileImg || 'assets/img/default_profile.jpg' }}" alt="">
           <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Profile menu">
             <mat-icon>more_vert</mat-icon>
@@ -47,11 +47,10 @@
             </button>
           </mat-menu>
         </div>
-        
+
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
-  <!-- <input [(colorPicker)]="color" [style.background]="color"/> -->
   <div fxFlex style="padding: 10px;">
     <router-outlet class="hidden-router"></router-outlet>
   </div>

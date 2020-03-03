@@ -21,25 +21,21 @@ export class LandingComponent implements OnInit {
   breakpoint = 3;
 
   notes: Note[];
-  selectedValue : String[] = ["NONE"]
-  toggleOptions: Array<Priorities> = [Priorities.Critical, Priorities.High,Priorities.Normal,Priorities.Low,Priorities.None];
+  selectedValue: String[] = ["NONE"]
+  toggleOptions: Array<Priorities> = [Priorities.Critical, Priorities.High, Priorities.Normal, Priorities.Low, Priorities.None];
 
 
   constructor(private noteService: NotesService,
     private dataService: DataService,
-    private zone:NgZone) { }
+    private zone: NgZone) { }
 
   ngOnInit() {
     this.setCols();
-    /* this.notes = this.dataService.getNotes();
-    this.notesService.GetUserNotes().subscribe(res => {
-      this.dataService.setNotes(res);
-    }); */
     this.dataService.notes.subscribe(notes => {
-      this.zone.run(()=> { // <== added
+      this.zone.run(() => {
         this.notes = notes;
-        });
-      
+      });
+
     });
 
     this.noteService.GetUserNotes().subscribe(res => {
@@ -72,5 +68,8 @@ export class LandingComponent implements OnInit {
     });
     //this.selectedValue.forEach(i => console.log(`Included Item: ${i}`));
   }
+
+
+ 
 
 }

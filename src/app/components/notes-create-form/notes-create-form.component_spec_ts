@@ -1,0 +1,43 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { NotesCreateFormComponent } from './notes-create-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DataService } from 'src/app/services/data.service';
+import { NotesService } from 'src/app/services/notes.service';
+import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+describe('NotesCreateFormComponent', () => {
+  let component: NotesCreateFormComponent;
+  let fixture: ComponentFixture<NotesCreateFormComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ NotesCreateFormComponent ],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatDialogModule,
+        MatFormFieldModule
+      ],
+      providers: [
+        DataService,
+        NotesService,
+        {provide: MatDialogRef, useValue: {}},
+      ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(NotesCreateFormComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

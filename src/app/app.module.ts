@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 /* Routing */
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +32,7 @@ import { NotesService } from './services/notes.service';
 import { DataService } from './services/data.service';
 import { ReminderComponent } from './components/reminder/reminder.component';
 import { SearchComponent } from './components/search/search.component';
+import { NotesMainViewComponent } from './components/notes-main-view/notes-main-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { SearchComponent } from './components/search/search.component';
     NotesCreateFormComponent,
     ReminderComponent,
     SearchComponent,
+    NotesMainViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ import { SearchComponent } from './components/search/search.component';
     HttpClientModule,
     AngularMaterialModule,
     FlexLayoutModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [AuthService, NotesService, DataService],

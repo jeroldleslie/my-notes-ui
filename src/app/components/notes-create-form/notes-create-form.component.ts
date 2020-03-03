@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Note } from 'src/app/model/note';
-import { FormBuilder, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { NotesService } from 'src/app/services/notes.service';
 import { DataService } from 'src/app/services/data.service';
 
@@ -35,9 +34,7 @@ export class NotesCreateFormComponent implements OnInit {
     private dataService: DataService,
     private notesService: NotesService,
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<NotesCreateFormComponent>,
-    @Inject(MAT_DIALOG_DATA)
-    public data: Note) {
+    public dialogRef: MatDialogRef<NotesCreateFormComponent>) {
     this.addNoteForm = this.formBuilder.group({
       title: this.title,
       content: this.content,
@@ -45,9 +42,7 @@ export class NotesCreateFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    //this.title.nativeElement.className = null;
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     if (this.addNoteForm.valid) {
@@ -59,9 +54,6 @@ export class NotesCreateFormComponent implements OnInit {
         this.notesService.GetUserNotes().subscribe(res => {
           this.dataService.updateUserNotes(res);
         });
-
-        //this.ngZone.run(() => this.router.navigateByUrl('/issues-list'))
-        //this.loginForm.reset();
       });
     }
     this.dialogRef.close();
